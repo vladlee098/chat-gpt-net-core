@@ -6,6 +6,8 @@
 /// 1. Now using retry policies
 /// 2. Using 
 
+using System;
+using System.Collections;
 using OpenAI.GPT3;
 using OpenAI.GPT3.Managers;
 using OpenAI.GPT3.ObjectModels;
@@ -14,7 +16,7 @@ using OpenAI.GPT3.ObjectModels.RequestModels;
 if (args.Length > 0)
 {
 
-    var apiKey = Environment.GetEnvironmentVariable("OPEN_AI_API_KEY");
+    var apiKey = System.Environment.GetEnvironmentVariable("OPEN_AI_API_KEY");
     var openAiService = new OpenAIService(new OpenAiOptions()
     {
         ApiKey = apiKey ?? string.Empty
@@ -25,7 +27,7 @@ if (args.Length > 0)
 
     var completionResult = openAiService.Completions.CreateCompletion(new CompletionCreateRequest()
     {
-        Prompt = args[0],
+        Prompt = "Once upon a time",
         MaxTokens = 5,
         Temperature = 1,
     }, Models.Davinci);
