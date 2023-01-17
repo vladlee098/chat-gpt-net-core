@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/chat/bin/Debug/net6.0/chat.dll",
+            "program": "${workspaceFolder}/src/bin/Debug/net6.0/win-x64/chat.exe",
             "args": [],
-            "cwd": "${workspaceFolder}/chat",
+            "cwd": "${workspaceFolder}/src",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
