@@ -6,6 +6,8 @@
 /// 1. Now using retry policies
 /// 2. Using 
 
+using System;
+using System.Linq;
 using OpenAI.GPT3;
 using OpenAI.GPT3.Managers;
 using OpenAI.GPT3.ObjectModels;
@@ -21,7 +23,7 @@ if (args.Length > 0)
     });
 
     // var content = new StringContent("{\"model\": \"text-davinci-001\", \"prompt\": \""+ args[0] +"\",\"temperature\": 1,\"max_tokens\": 100}", 
-    //     Encoding.UTF8, "application/json"); 
+    //     Encoding.UTF8, "application/dodotnet build chat-gptjson"); 
 
     var completionResult = openAiService.Completions.CreateCompletion(new CompletionCreateRequest()
     {
