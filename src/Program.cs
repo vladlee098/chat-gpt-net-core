@@ -13,48 +13,53 @@ using OpenAI.GPT3.Managers;
 using OpenAI.GPT3.ObjectModels;
 using OpenAI.GPT3.ObjectModels.RequestModels;
 
-if (args.Length > 0)
+// if (args.Length == 0)
+// {
+//     Console.WriteLine(">>Need to provide a question for bot");
+//     Console.WriteLine(">>Press ENTER to quit.");
+//     Console.ReadLine();
+//     return;
+// }
+
+var prompt = "Once upon a time, everyone said that the";
+
+var apiKey = Environment.GetEnvironmentVariable("OPEN_AI_API_KEY");
+var openAiService = new OpenAIService(new OpenAiOptions()
 {
+    ApiKey = apiKey ?? string.Empty
+});
 
-    var apiKey = Environment.GetEnvironmentVariable("OPEN_AI_API_KEY");
-    var openAiService = new OpenAIService(new OpenAiOptions()
+for( int step = 0; step < 10; step++)
+{
+    var completionResult = await openAiService.Completions.CreateCompletion(new CompletionCreateRequest()
     {
-        ApiKey = apiKey ?? string.Empty
-    });
-
-    // var content = new StringContent("{\"model\": \"text-davinci-001\", \"prompt\": \""+ args[0] +"\",\"temperature\": 1,\"max_tokens\": 100}", 
-    //     Encoding.UTF8, "application/dodotnet build chat-gptjson"); 
-
-    var completionResult = openAiService.Completions.CreateCompletion(new CompletionCreateRequest()
-    {
-        Prompt = args[0],
+        Prompt = prompt,
         MaxTokens = 5,
         Temperature = 1,
     }, Models.Davinci);
 
-    if (completionResult.IsCompletedSuccessfully)
+    if (completionResult.Successful)
     {
-        Console.WriteLine(completionResult.Result.Choices.FirstOrDefault());
+        var save = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Blue;
+
+        Console.WriteLine($"Prompt: {prompt}");
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"ChatGPT says: {completionResult.Choices.First().Text}");
+
+        Console.ForegroundColor = save;
+
+        prompt = $"{prompt} {completionResult.Choices.First().Text}";
     }
     else
     {
-        if (completionResult.Result.Error == null)
+        if (completionResult.Error == null)
         {
             throw new Exception("Unknown Error");
         }
-        Console.WriteLine($"{completionResult.Result.Error.Code}: {completionResult.Result.Error.Message}");
+        Console.WriteLine($"{completionResult.Error.Code}: {completionResult.Error.Message}");
     }
-}
-else
-{
-    Console.WriteLine(">>Need to provide a question for bot");
+
 }
 
-Console.ReadLine();
-
-
-// static HttpResponse RequestAnswer( string question )
-// {
-//         var client = _clientFactory.CreateClient();
-//         return await _clientPolicy.ExponentialHttpRetry.ExecuteAsync(()=> client.PostAsync("https://api.openai.com/v1/completions"));    
-// }
