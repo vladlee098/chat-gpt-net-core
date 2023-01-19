@@ -47,9 +47,14 @@
             "args": [
                 "watch",
                 "run",
+<<<<<<< HEAD
                 "${workspaceFolder}/chat-gpt.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
+=======
+                "--project",
+                "${workspaceFolder}/chat-gpt.csproj"
+>>>>>>> 1f611780b5041daac9fc5de25ac7be5414be9879
             ],
             "problemMatcher": "$msCompile"
         }
