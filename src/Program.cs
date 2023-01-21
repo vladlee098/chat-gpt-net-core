@@ -1,12 +1,4 @@
-﻿///
-/// This is almost exact copy from:
-/// https://github.com/binarythistle/S06E01---GPT3-API-Client/blob/main/Program.cs
-///
-/// Additions:
-/// 1. Now using retry policies
-/// 2. Using 
-
-using System;
+﻿using System;
 using System.Linq;
 using OpenAI.GPT3;
 using OpenAI.GPT3.Managers;
