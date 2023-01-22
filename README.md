@@ -33,4 +33,4 @@ ChatGPT says:  massive amount of bailouts
 Prompt: Once upon a time, everyone said that the  subprime crisis was contained , but only a few  months later, it was  all over the place,  and a global recession was  only narrowly averted by  wonderful monetary policy and a  massive amount of bailouts
 ChatGPT says: , which only left the
 Prompt: Once upon a time, everyone said that the  subprime crisis was contained , but only a few  months later, it was  all over the place,  and a global recession was  only narrowly averted by  wonderful monetary policy and a  massive amount of bailouts , which only left the
-ChatGPT says:  bankers holding the bag (
+ChatGPT says:  bankers holding the bag
